@@ -3,8 +3,11 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const fs = require("fs");
+const _ = require("underscore");
 
-module.exports = {
+
+const out = {
     dev: {
 
         // Paths
@@ -13,7 +16,7 @@ module.exports = {
         proxyTable: {},
 
         // Various Dev Server settings
-        host: '192.168.2.69', // can be overwritten by process.env.HOST
+        host: '0.0.0.0', // can be overwritten by process.env.HOST
         port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
         autoOpenBrowser: false,
         errorOverlay: true,
@@ -38,8 +41,9 @@ module.exports = {
 
     build: {
         // Template for index.html
-        index: path.resolve(__dirname, '../dist/index.html')/*"F:\\yesaway\\小way\\V1.0\\产品文档\\shuttle\\index.html"*/,
-
+        //index: path.resolve(__dirname, '../dist/index.html')/*"F:\\yesaway\\小way\\V1.0\\产品文档\\shuttle\\index.html"*/,
+        htmlDir:path.resolve(__dirname, '../dist'),
+        serverEnv:"",
         // Paths
         assetsRoot: path.resolve(__dirname, '../dist')/*"F:\\yesaway\\小way\\V1.0\\产品文档\\shuttle"*/,
         assetsSubDirectory: 'static',
@@ -49,7 +53,7 @@ module.exports = {
          * Source Maps
          */
 
-        productionSourceMap: true,
+        productionSourceMap: false,
         // https://webpack.js.org/configuration/devtool/#production
         devtool: '#source-map',
 
@@ -67,3 +71,8 @@ module.exports = {
         bundleAnalyzerReport: process.env.npm_config_report
     }
 }
+
+
+
+
+module.exports = out;

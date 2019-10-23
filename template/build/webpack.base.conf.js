@@ -3,6 +3,7 @@ const path = require('path')
 const utils = require('./utils')
 const alias = require('./alias.config');
 const config = require('../config')
+const entry = require("./entry");
 const vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve(dir) {
@@ -12,9 +13,7 @@ function resolve(dir) {
 
 module.exports = {
     context: path.resolve(__dirname, '../'),
-    entry: {
-        app: './src/main.js'
-    },
+    entry: entry.entry,
     output: {
         path: config.build.assetsRoot,
         filename: '[name].js',
@@ -41,6 +40,9 @@ module.exports = {
                     resolve('test'),
                     resolve('node_modules/webpack-dev-server/client'),
                     /*resolve('node_modules/_yesaway_request@1.0.3@yesaway_request/request'),*/
+                    (src)=>{
+                        return /yesaway_request/g.test(src);
+                    },
                     /yesaway_request/g
                 ]
             },

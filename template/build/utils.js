@@ -3,6 +3,11 @@ const path = require('path')
 const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const packageConfig = require('../package.json')
+var yesawayUiConfig = require("./alias.config").yesawayUiConfig;
+
+function resolveResource(name) {
+  return path.resolve(__dirname, '../' + name);
+}
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -38,7 +43,7 @@ exports.cssLoaders = function (options) {
 
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
-    const loaders = options.usePostCSS ? [cssLoader, postcssLoader,px2remLoader] : [cssLoader,px2remLoader]
+    const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
 
     if (loader) {
       loaders.push({
@@ -47,6 +52,15 @@ exports.cssLoaders = function (options) {
           sourceMap: options.sourceMap
         })
       })
+      if(loader=="sass"){
+        loaders.push({
+          loader: 'sass-resources-loader',
+          options: {
+            // 多个文件时用数组的形式传入，单个文件时可以直接使用 path.resolve(__dirname, '../static/style/common.scss'
+            resources: [resolveResource(yesawayUiConfig.varScss)]
+          }
+        });
+      }
     }
 
     // Extract CSS when that option is specified
