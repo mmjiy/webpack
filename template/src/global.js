@@ -1,4 +1,3 @@
-import serviceConfig from "@/service/serviceConfig";
 import {requestOn,requestConfig} from "yesaway_request/request/base/request";
 import config from "Config";
 import server from "@/service/server";
@@ -45,7 +44,7 @@ const out = {
 
         requestConfig.mock = config.api.mock;
         requestConfig.mockFail = config.api.mockFail
-        serviceConfig.init();
+        //serviceConfig.init();
     },
 }
 export default out;

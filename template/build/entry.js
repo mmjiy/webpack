@@ -1,11 +1,11 @@
 module.exports = {
     entry:{
-        index: './src/main.js'
+        editAddress: './src/pages/editAddress/index.js',
     },
     html:{
-        index:{
+        editAddress:{
             filename:"index",
-            chunks: ['index']
+            chunks: ['editAddress']
         },
     },
     cache:{}

@@ -43,11 +43,11 @@ let out = function (version,versionList) {
                 </style>` +
                 '</head>' +
                 '<body>' +
-                '<h1>{{version}}</h1>' +
+                '<h1></h1>' +
                 '<div v-for="(item,index) in list">' +
-                '<a :href="index">版本：{{index}}</a>' +
-                '<span class="time">{{item.date}}</span>' +
-                '<div class="des"><span v-for="logItem in item.message">{{logItem}}</span></div>' +
+                '<a :href="index">版本：</a>' +
+                '<span class="time"></span>' +
+                '<div class="des"><span v-for="logItem in item.message"></span></div>' +
                 '<div class="split"></div>' +
                 '</div>' +
                 '</body>' +
